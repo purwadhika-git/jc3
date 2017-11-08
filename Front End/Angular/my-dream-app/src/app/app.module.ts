@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from "@angular/forms";
+import { RouterModule } from "@angular/router";
 
 import { AppComponent } from './app.component';
 import { Component1Component } from './component1/component1.component';
@@ -17,7 +18,12 @@ import { TasklistComponent } from './tasklist/tasklist.component';
     TasklistComponent
   ],
   imports: [
-    BrowserModule, FormsModule
+    BrowserModule, FormsModule,
+    RouterModule.forRoot([
+      { path : '', component : CalculatorComponent},
+      { path : 'c1', component : Component1Component},
+      { path : 'c2', component : Component2Component},
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]

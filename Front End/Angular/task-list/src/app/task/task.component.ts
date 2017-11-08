@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Task } from "../model/task";
 
 @Component({
-  selector: 'app-tasklist',
-  templateUrl: './tasklist.component.html',
-  styleUrls: ['./tasklist.component.css']
+  selector: 'app-task',
+  templateUrl: './task.component.html',
+  styleUrls: ['./task.component.css']
 })
-export class TasklistComponent implements OnInit {
+export class TaskComponent implements OnInit {
 
   newTask : string = "";
   taskList = [];
