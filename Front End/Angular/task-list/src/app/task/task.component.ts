@@ -9,7 +9,10 @@ import { NgForm } from "@angular/forms";
 })
 export class TaskComponent implements OnInit {
 
+  // ngModel
   newTask : string = "";
+  
+  // array of task
   taskList = [];
 
   constructor() { }
@@ -17,22 +20,25 @@ export class TaskComponent implements OnInit {
   ngOnInit() {
   }
 
-  AddTask(){
+  // add task using ngModel
+  // AddTask(){
+  //   if(this.newTask != "" && this.newTask != null){
+  //     const task : Task = {
+  //       name : this.newTask,
+  //       completed : false,
+  //     };
 
-    const task : Task = {
-      name : this.newTask,
-      completed : false,
-    };
+  //     this.taskList.push(task);
+  //     this.newTask = "";
 
-    this.taskList.push(task);
-    this.newTask = "";
+  //     console.log(this.taskList);
+  //   }
+  // }
 
-    console.log(this.taskList);
-  }
-
+  // add task using ngForm
   AddTaskForm(f : NgForm){
 
-    if(f.value.task != ""){
+    if(f.value.task != "" && f.value.task != null){
         const task : Task = {
           name : f.value.task,
           completed : false,
@@ -48,9 +54,7 @@ export class TaskComponent implements OnInit {
   }
 
   DeleteTask(index){
-
     this.taskList.splice(index, 1);
-
   }
 
 }

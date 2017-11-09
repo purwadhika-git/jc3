@@ -1,0 +1,113 @@
+<div class="container" style="margin-top:20px;">
+
+  <div class="panel panel-default disable-border-radius">
+    <div class="panel-heading">
+      <h3 class="panel-title">User Registration Form</h3>
+    </div>
+    <div class="panel-body">
+      <form class="form-horizontal" #data="ngForm" (ngSubmit)="registerUser(data)" >
+        
+        <div class="form-group">
+          <label class="col-sm-2 control-label text-left">Name</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control disable-border-radius" placeholder="Name" name="name" ngModel >
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label text-left">Address</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control disable-border-radius" placeholder="Address" name="address" ngModel>
+            </div>
+          </div>
+
+        <div class="form-group">
+          <label class="col-sm-2 control-label text-left">Email</label>
+          <div class="col-sm-10">
+            <input type="email" class="form-control disable-border-radius" placeholder="Email" name="email" ngModel email>
+          </div>
+        </div>
+        
+        <div style="text-align: right">
+          <button type="submit" class="btn btn-default" >Add</button>
+          <button type="button" class="btn btn-default" (click)="resetForm(data)" >Reset</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <div class="panel panel-default disable-border-radius">
+    <div class="panel-heading">
+      <h3 class="panel-title">List of User</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped disable-border-radius">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Address</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+        
+        <tr *ngFor="let t of userList, let i = index">
+
+          <td>{{ t.id }}</td>
+          <td>{{ t.name }}</td>
+          <td>{{ t.address }}</td>
+          <td>{{ t.email }}</td>
+          <td>
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" (click)="setEditedIndex(i)" >Edit</button>
+            <button type="button" class="btn btn-danger" (click)="deleteUser(i)" >Remove</button>
+          </td>
+
+        </tr>
+
+      </table>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form class="form-horizontal" #f="ngForm" (ngSubmit)="updateUser(f)" >
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Edit User</h4>
+          </div>
+          <div class="modal-body">
+
+                <div class="form-group">
+                  <label class="col-sm-2 control-label text-left">Name</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control disable-border-radius" placeholder="Name" name="name" ngModel >
+                  </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label text-left">Address</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control disable-border-radius" placeholder="Address" name="address" ngModel>
+                    </div>
+                  </div>
+
+                <div class="form-group">
+                  <label class="col-sm-2 control-label text-left">Email</label>
+                  <div class="col-sm-10">
+                    <input type="email" class="form-control disable-border-radius" placeholder="Email" name="email" ngModel email>
+                  </div>
+                </div>
+              
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" >Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
