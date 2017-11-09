@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from "../model/task";
+import { NgForm } from "@angular/forms";
 
 @Component({
   selector: 'app-task',
@@ -27,6 +28,23 @@ export class TaskComponent implements OnInit {
     this.newTask = "";
 
     console.log(this.taskList);
+  }
+
+  AddTaskForm(f : NgForm){
+
+    if(f.value.task != ""){
+        const task : Task = {
+          name : f.value.task,
+          completed : false,
+        };
+
+        const a = new Task();
+
+        this.taskList.push(task);
+        f.reset();
+
+        console.log(this.taskList);
+    }
   }
 
   DeleteTask(index){
