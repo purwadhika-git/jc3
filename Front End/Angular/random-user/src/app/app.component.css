@@ -1,0 +1,31 @@
+#header {
+    background-color: #383838;
+    color: white;
+    text-align: center;
+    height: 400px;
+}
+
+#header h1 {
+    padding-top: 35px;
+    margin: 0px;
+    font-size: 50px;
+}
+
+#header p {
+    margin: 0px;
+}
+
+#profile {
+    background-color: white;
+    margin-top: -200px;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+#profile-image{
+    margin: auto;
+    border: solid black 4px;
+    width: 200px;
+}
+

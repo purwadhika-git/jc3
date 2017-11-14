@@ -1,0 +1,16 @@
+<div id="header">
+  <h1> PROFILE GENERATOR </h1>
+  <p>Simple Profile Generator</p>
+</div>
+
+<div id="profile" class="col-md-6 col-md-offset-3">
+
+  <img src="{{ data.picture.large }}" alt="Image" id="profile-image" class="img-responsive img-circle" >
+  <div>Name : {{ data.name.first }}</div>
+  <div>Email :</div>
+  <div>DOB :</div>
+  <div>Phone :</div>
+
+  <button type="button" class="btn btn-primary" (click)="RefreshData()" >Refresh</button>
+
+</div>

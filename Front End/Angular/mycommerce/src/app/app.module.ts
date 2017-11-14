@@ -1,24 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from "@angular/forms";
-
-import { CalculatorService } from "./calculator.service";
-import { UserService } from "./user.service";
+import { RouterModule } from "@angular/router";
 
 import { AppComponent } from './app.component';
-import { Calculator1Component } from './calculator1/calculator1.component';
-import { UserComponent } from './user/user.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    Calculator1Component,
-    UserComponent
+    HomeComponent,
   ],
   imports: [
-    BrowserModule, FormsModule
+    BrowserModule, FormsModule,
+    RouterModule.forRoot([
+      { path : '', component : HomeComponent },
+    ])
   ],
-  providers: [CalculatorService, UserService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
