@@ -1,0 +1,45 @@
+.header {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: url('/assets/img/bgheader.jpg') no-repeat center center scroll;
+    background-size: cover;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    position: relative; 
+}
+
+.header .header-tagline {
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    width: 100%;
+    padding: 40px 0px 40px 0px;
+    margin: 10px 0px 10px 0px;
+}
+
+.header .header-tagline .title {
+    font-weight: bold;
+    font-size: 30px;
+    text-transform: uppercase;
+}
+
+.header .header-tagline .description {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.property-list{
+    margin-top: 20px;
+}
+
+.property-list>h3{
+    text-align: center;
+    margin: 10px;
+}
+
+.property-preview{
+    background-color: white;
+    width: 100%;
+    margin: 10px;
+    padding: 20px;
+}

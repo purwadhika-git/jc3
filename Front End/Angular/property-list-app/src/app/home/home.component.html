@@ -1,0 +1,32 @@
+<section class="header">
+  <div class="header-tagline">
+    <div class="title">application name</div>
+    <div class="description">This apps is amazing !!</div>
+  </div>
+  <div class="col-md-6 col-md-offset-3">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search Property ...">
+      <span class="input-group-btn">
+        <button class="btn btn-info" type="button">Search</button>
+      </span>
+    </div><!-- /input-group -->
+  </div>
+</section>
+<section class="property-list col-xs-12 col-md-10 col-md-offset-1">
+
+  <h3>PROPERTY LIST</h3>
+  
+  <div class="owl-carousel">
+      <div *ngFor="let u of unitList, let last = last">
+          <div class="item">
+              <div class="property-preview">
+                <img src="{{ u.image }}" alt="" srcset="" class="img-responsive">
+                <h3> {{ u.name }} </h3>
+                <button routerLink="/detail" class="btn btn-info remove-border-radius pull-right">Details</button> 
+                <p>{{ u.description }}</p>
+              </div>
+            </div>
+            {{ last ? loadOwlCarousel() : '' }}
+      </div>
+  </div>
+</section>
