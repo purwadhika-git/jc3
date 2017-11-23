@@ -1,11 +1,11 @@
-<form>
+<form #f="ngForm" (ngSubmit)="update(f)" novalidate >
   <div class="form-group">
     <label>Name</label>
-    <input type="text" class="form-control" placeholder="Name" value="{{ obj[0] }}">
+    <input type="text" class="form-control" placeholder="Name" value="{{ (obj != null) ? obj.name : '' }}" ngModel name="name" >
   </div>
   <div class="form-group">
     <label>Phone Number</label>
-    <input type="text" class="form-control"  placeholder="Phone Number" value="{{ obj[1] }}">
+    <input type="text" class="form-control"  placeholder="Phone Number" value="{{ (obj != null) ? obj.phone_number : '' }}" ngModel name="phone_number" >
   </div>
-  <button type="submit" class="btn btn-default">Submit</button>
+  <button type="submit" class="btn btn-success">Update</button>
 </form>

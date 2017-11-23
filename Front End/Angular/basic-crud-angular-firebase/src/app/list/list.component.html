@@ -13,7 +13,7 @@
     </td>
     <td style="text-align:right">
       <input type="button" value="Detail" class="btn btn-info" routerLink="/detail/{{ data.key }}" >
-      <input type="button" value="Delete" class="btn btn-danger">
+      <input type="button" value="Delete" class="btn btn-danger" (click)="remove(data.key)" >
     </td>
   </tr>
 </table>

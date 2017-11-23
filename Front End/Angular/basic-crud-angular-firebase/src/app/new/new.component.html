@@ -1,11 +1,11 @@
-<form>
-  <div class="form-group">
-    <label>Name</label>
-    <input type="text" class="form-control" placeholder="Name" ngModel name="name" >
-  </div>
-  <div class="form-group">
-    <label>Phone Number</label>
-    <input type="text" class="form-control"  placeholder="Phone Number" ngModel name="phoneNumber" >
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
+<form #f="ngForm" (ngSubmit)="add(f)" novalidate >
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" class="form-control" placeholder="Name" value="" ngModel name="name" >
+    </div>
+    <div class="form-group">
+      <label>Phone Number</label>
+      <input type="text" class="form-control"  placeholder="Phone Number" value="" ngModel name="phone_number" >
+    </div>
+    <button type="submit" class="btn btn-info">Add</button>
 </form>

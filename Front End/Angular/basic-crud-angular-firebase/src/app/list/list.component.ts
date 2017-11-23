@@ -14,6 +14,7 @@ export class ListComponent implements OnInit {
   constructor(private db : AngularFireDatabase) { }
 
   ngOnInit() {
+
     this.db.list('sample')
     .snapshotChanges()
     .subscribe(result => {
@@ -24,8 +25,13 @@ export class ListComponent implements OnInit {
         }
         return obj;
       });
-      console.log(this.list);
     })
+    
+  }
+
+  remove(id){
+    let obj = this.db.object('sample/' + id)
+    obj.remove()
   }
 
 }
