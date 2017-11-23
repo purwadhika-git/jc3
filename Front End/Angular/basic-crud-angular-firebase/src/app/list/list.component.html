@@ -1,0 +1,19 @@
+<table class="table table-hover">
+  <tr>
+    <th>Name</th>
+    <th>Phone Number</th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let data of list" >
+    <td>
+      {{ data.value.name }}
+    </td>
+    <td>
+      {{ data.value.phone_number }}
+    </td>
+    <td style="text-align:right">
+      <input type="button" value="Detail" class="btn btn-info" routerLink="/detail/{{ data.key }}" >
+      <input type="button" value="Delete" class="btn btn-danger">
+    </td>
+  </tr>
+</table>
