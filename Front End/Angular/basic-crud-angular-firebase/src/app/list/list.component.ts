@@ -18,13 +18,18 @@ export class ListComponent implements OnInit {
     this.db.list('sample')
     .snapshotChanges()
     .subscribe(result => {
+
       this.list = result.map(data => {
+
         var obj = {
           key : data.key,
           value : data.payload.val()
+        
         }
+
         return obj;
       });
+
     })
     
   }
