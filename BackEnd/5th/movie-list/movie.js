@@ -31,17 +31,16 @@ var updateData = (obj, id) => {
     let result = {};
 
     for (let i = 0; i < array.length; i++) {
-        console.log(array[i].id + " " + id);
         if (array[i].id == id) {
-            result = array[i];
-
+            
             array[i].title = (obj.title) ? obj.title : array[i].title;
             array[i].synopsis = (obj.synopsis) ? obj.synopsis : array[i].synopsis;
             array[i].duration = (obj.duration) ? obj.duration : array[i].duration;
             array[i].rating = (obj.rating) ? obj.rating : array[i].rating;
             array[i].listOfActor = (obj.listOfActor) ? obj.listOfActor : array[i].listOfActor;
             array[i].genre = (obj.genre) ? obj.genre : array[i].genre;
-            
+
+            result = array[i];
             break;
         }
     }
