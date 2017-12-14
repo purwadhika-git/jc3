@@ -1,5 +1,5 @@
 const express = require("express")
-const movieDB = require("../model/movie-db");
+const movieDB = require("../model/movie-db-mongoose");
 const Movie = require("../model/movie");
 
 const router = express.Router();
