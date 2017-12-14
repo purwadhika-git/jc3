@@ -21,7 +21,7 @@ var AddNewMovie = (obj, callback) => {
     });
 }
 
-var GetMovieById = (id) => {
+var GetMovieById = (id, callback) => {
     MongoClient.connect(url, (err, db) => {
         if(err){
             throw err;
@@ -32,15 +32,70 @@ var GetMovieById = (id) => {
             if(err){
                 throw err;
             }
-            console.log(res)
+            callback(res);
             db.close();
         });
 
     });
 }
 
-GetMovieById('5a30d76ea04d542cbcff2610');
+var GetAllMovie = (callback) => {
+    MongoClient.connect(url, (err, db) => {
+        if(err){
+            throw err;
+        }
+
+        db.collection("movie").find({}).toArray((err, res) => {
+            if(err){
+                throw err;
+            }
+            callback(res);
+            db.close();
+        });
+
+    });
+}
+
+var DeleteMovie = (id, callback) => {
+    MongoClient.connect(url, (err, db) => {
+        if(err){
+            throw err;
+        }
+
+        var o_id = new ObjectID(id)
+        db.collection("movie").deleteOne({ _id : o_id}, (err, res) => {
+            if(err){
+                throw err;
+            }
+            callback(res);
+            db.close();
+        });
+
+    });
+}
+
+var UpdateMovie = (id, newObj, callback) => {
+    MongoClient.connect(url, (err, db) => {
+        if(err){
+            throw err;
+        }
+
+        var o_id = new ObjectID(id)
+        db.collection("movie").updateOne({ _id : o_id}, newObj, (err, res) => {
+            if(err){
+                throw err;
+            }
+            callback(res);
+            db.close();
+        });
+
+    });
+}
 
 module.exports = {
-    AddNewMovie
+    AddNewMovie,
+    GetMovieById,
+    GetAllMovie, 
+    DeleteMovie,
+    UpdateMovie
 }

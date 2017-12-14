@@ -6,7 +6,15 @@ const router = express.Router();
 
 
 router.get("/movie", (req, res) => {
-    
+    movieDB.GetAllMovie((result) => {
+        res.send(result);
+    });
+})
+
+router.get("/movie/:id", (req, res) => {
+    movieDB.GetMovieById(req.params.id, (result) => {
+        res.send(result);
+    });
 })
 
 router.post("/movie", (req, res) => {
@@ -25,11 +33,22 @@ router.post("/movie", (req, res) => {
 })
 
 router.put("/movie", (req, res) => {
+    let newObj = new Movie(req.body.title, 
+        req.body.synopsis, 
+        req.body.duration, 
+        req.body.rating, 
+        req.body.listOfActor, 
+        req.body.genre);
     
+    movieDB.UpdateMovie(req.body._id, newObj, (result)=>{
+        res.send(result);
+    })
 })
 
-router.delete("/movie", (req, res) => {
-    
+router.delete("/movie/:id", (req, res) => {
+    movieDB.DeleteMovie(req.params.id, (result) => {
+        res.send(result);
+    })
 })
 
 
