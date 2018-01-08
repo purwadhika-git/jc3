@@ -14,13 +14,15 @@ export class AppComponent {
 
   GetData(){
 
-    this.http.get("https://jsonplaceholder.typicode.com/users")
+    //this.http.get("https://jsonplaceholder.typicode.com/users")
+    this.http.get("http://localhost:2018")
     .subscribe(
         result => {
           
           setTimeout(()=>{
 
-            this.userList = result.json();
+            //this.userList = result.json();
+            console.log(result);
 
           }, 4000);
 
