@@ -59,13 +59,28 @@ export class AppComponent implements OnInit {
           console.log(error);
         },
       );
-      
+
       
 
     }
     else{
       console.log("error")
     }
+  }
+
+  DeleteEmployeeData(id){
+    let header = new Headers();
+    let options = new RequestOptions({ headers : header });
+
+    this.http.delete("http://localhost:3000/api/employee/" + id, options)
+    .subscribe(
+      result => {
+        this.loadEmployeeList();
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
 }
