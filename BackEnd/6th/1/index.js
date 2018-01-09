@@ -9,6 +9,7 @@ const app = express();
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended : true }));
 app.use(fileUpload());
+app.use(express.static('public'));
 
 app.post('/upload', function (req, res) {
     
@@ -30,4 +31,4 @@ app.post('/upload', function (req, res) {
 app.use("/api", postController);
 app.use("/api", commentController);
 
-app.listen(3000);
+app.listen(3001);

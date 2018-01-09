@@ -9,8 +9,8 @@ const employeeSchema = new Schema({
     name : String,
     address : String,
     phoneNumber : String,
-    salary: Number
-
+    salary: Number,
+    profile : String
 });
 
 const Employee = mongoose.model("employee", employeeSchema);
