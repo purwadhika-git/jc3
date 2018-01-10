@@ -38,32 +38,7 @@ passport.use("auth", new BearerStrategy((token, done) => {
 
 }));
 
-app.post("/data", passport.authenticate("auth", { session : false }), (req, res) => {
-    //res.send("Berhasil");
-    res.json(req.user);
-});
-
-app.post("/login", (req, res) => {
-
-    if (req.body.username == "user" && req.body.password == "abc123") {
-
-        const payload = {
-            id : "USR10012018",
-            name : "user"
-        };
-
-        const token = jwt.sign(payload, "secretkey", { expiresIn : 30 });
-
-        res.json({ token : token});
-    }
-    else{
-        res.status(404).json({ message : "User not found !"});
-    }
-
-})
-
-
-app.use("/api/employee", employeeRoutes);
+app.use("/api/employee", employeeRoutes(passport));
 app.use("/api/user", userRoutes);
 
 app.listen(3000);
