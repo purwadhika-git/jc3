@@ -1,7 +1,13 @@
 const express = require("express");
 const bodyParser = require("body-parser")
 const employeeRoutes = require("./routes/employee");
+const userRoutes = require("./routes/user");
 const fileUpload = require("express-fileupload");
+
+const passport = require("passport");
+const BearerStrategy = require("passport-http-bearer").Strategy;
+
+const jwt = require("jsonwebtoken");
 
 const app = express();
 
@@ -16,34 +22,48 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : true }));
 app.use(fileUpload());
 app.use(express.static('public'));
+app.use(passport.initialize());
 
-app.post("/upload", (req, res) => {
+passport.use("auth", new BearerStrategy((token, done) => {
+    jwt.verify(token, "secretkey", (error, decoded) => {
 
-    console.log(req.body.name);
+        if (error) {
+            return done("User Not Authorized", null);
+        }
+        else{
+            return done(null, decoded);
+        }
 
-    if (!req.files.gambar) {
-        return res.status(400).send("No files were uploaded");
+    })
+
+}));
+
+app.post("/data", passport.authenticate("auth", { session : false }), (req, res) => {
+    //res.send("Berhasil");
+    res.json(req.user);
+});
+
+app.post("/login", (req, res) => {
+
+    if (req.body.username == "user" && req.body.password == "abc123") {
+
+        const payload = {
+            id : "USR10012018",
+            name : "user"
+        };
+
+        const token = jwt.sign(payload, "secretkey", { expiresIn : 30 });
+
+        res.json({ token : token});
+    }
+    else{
+        res.status(404).json({ message : "User not found !"});
     }
 
-    let image = req.files.gambar;
-
-    // let ext = image.name.split(".")[1];
-    // console.log(ext);
-
-    let date = new Date();
-    let imageName = date.getTime() + ".png"
-
-    image.mv("./public/" + imageName, (error) => {
-
-        if (error) return res.status(500).send(error);
-
-        res.json({ path : "http://localhost:3000/" + imageName})
-
-    });
-
-});
+})
 
 
 app.use("/api/employee", employeeRoutes);
+app.use("/api/user", userRoutes);
 
 app.listen(3000);

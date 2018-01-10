@@ -12,6 +12,9 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "express-fileupload": "^0.3.0",
-    "mongoose": "^4.13.9"
+    "jsonwebtoken": "^8.1.0",
+    "mongoose": "^4.13.9",
+    "passport": "^0.4.0",
+    "passport-http-bearer": "^1.0.1"
   }
 }
