@@ -4,6 +4,11 @@ const router = express.Router();
 
 module.exports = function(passport){
 
+
+    // router.use(passport.authenticate("auth", { session : false }), (req, res, next) => {
+    //     next();
+    // })
+
     router.get("/:id", (req, res) => {
     
         Employee.findById(req.params.id, (error, result) => {

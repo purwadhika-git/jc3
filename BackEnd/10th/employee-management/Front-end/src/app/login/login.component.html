@@ -1,0 +1,29 @@
+<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3" style="margin-top : 50px;">
+
+    <form #f="ngForm" (ngSubmit)="Login(f)" class="form-horizontal" >
+  
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Login</h3>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label class="col-xs-3">User Name</label>
+            <div class="col-xs-9">
+              <input type="text" class="form-control" name="username" ngModel >
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xs-3">Password</label>
+            <div class="col-xs-9">
+              <input type="password" class="form-control" name="password" ngModel >
+            </div>
+          </div>
+          <button type="submit" class="btn btn-default pull-right" >Login</button>
+        </div>
+      </div>
+  
+    </form>
+
+  </div>
+  
