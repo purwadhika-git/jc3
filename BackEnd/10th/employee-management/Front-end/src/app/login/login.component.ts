@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Headers, RequestOptions } from "@angular/http";
 import { NgForm } from "@angular/forms";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import { NgForm } from "@angular/forms";
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private http : Http) { }
+  constructor(private http : Http, private route : Router) { }
 
   ngOnInit() {
   }
@@ -26,8 +27,8 @@ export class LoginComponent implements OnInit {
     this.http.post("http://localhost:3000/api/user/login", obj, options)
     .subscribe(
       result => {
-        console.log(result.json());
-        localStorage.setItem("token", result.json().token)
+        sessionStorage.setItem("token", result.json().token)
+        this.route.navigate(['/main']);
       },
       error => {
         console.log("User Not Found !");

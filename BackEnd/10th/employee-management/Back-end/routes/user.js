@@ -34,7 +34,7 @@ router.post("/login", (req, res) => {
                 id : result._id,
                 name : result.username
             };
-            const token = jwt.sign(payload, "secretkey", { expiresIn : 3600 });    
+            const token = jwt.sign(payload, "secretkey", { expiresIn : 30 });    
             res.json({ token : token});
         }
 
